@@ -22,6 +22,10 @@ public class Cube {
       }
     }
 
+    public char[][][] getCube(){
+      return data;
+    }
+
     //Function to display the current state of the cube
     public void display(){
 
@@ -768,7 +772,7 @@ public class Cube {
       String userMoves = "";
 
       //Scramble the cube
-      String[] scrambleHelper = {"u", "d", "l", "r", "f", "b", "d\'", "l\'", "u\'", "f\'", "r\'", "r\'", "b\'" };
+      String[] scrambleHelper = {"u"};
       
       for(int moves = 0; moves < scrambleHelper.length; moves++){
         theCube.move(scrambleHelper[moves]);
@@ -829,7 +833,7 @@ public class Cube {
         theCube.display();
       }
 
-      if(theCube.equals(solvedCube)){
+      if(java.util.Arrays.deepEquals(theCube.getCube(), solvedCube.getCube())){
         cubeSolved = true;
       }
       
