@@ -7,6 +7,9 @@ public class Cube {
 
     char[][][] data = new char[6][3][3];
 
+    ArrayList<String> moves = new ArrayList<>();
+
+
     //Constructor
     public GeneratedCube(){
             
@@ -41,6 +44,8 @@ public class Cube {
 
     //Function for movement
     public void move(String movement){
+
+      moves.add(movement);
 
       char[] moveHelper;
       char[] moveHelperSide1;
@@ -796,7 +801,7 @@ public class Cube {
     theCube.display();
 
     while(cubeSolved == false){
-      System.out.println("The possible commands are u, u', d, d', l, l', r, r', f, f', b, b' (input anything else to see the cube): ");
+      System.out.println("The possible commands are u, u', d, d', l, l', r, r', f, f', b, b' or s to show how to solve (input anything else to see the cube): ");
       String command = userInput.nextLine(); 
       System.out.println();
     
@@ -805,6 +810,20 @@ public class Cube {
       command.equals("f") || command.equals("f\'") || command.equals("b") || command.equals("b\'")){
         theCube.move(command);
         userMoves = (command + " " + userMoves);
+      }
+      else if(command.equals("s")){
+        System.out.println();
+        for (int i = theCube.moves.size(); i > 0; i--) {
+            
+            if(theCube.moves.get(i-1).contains("'")){
+                System.out.print(theCube.moves.get(i-1).substring(0, theCube.moves.get(i-1).length() - 1)+" ");
+            }
+            else{
+                System.out.print(theCube.moves.get(i-1)+"' ");
+            }
+            theCube.moves.remove(i-1);
+        }
+        System.out.println();
       }
       else {
         theCube.display();
