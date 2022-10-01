@@ -772,13 +772,14 @@ public class Cube {
       String userMoves = "";
 
       //Scramble the cube
-      String[] scrambleHelper = {"u"};
+      String[] scrambleHelper = {"u", "d", "l", "r", "f", "b", "d\'", "l\'", "u\'", "f\'", "r\'", "r\'", "b\'"};
       
       for(int moves = 0; moves < scrambleHelper.length; moves++){
         theCube.move(scrambleHelper[moves]);
       }
 
       boolean cubeSolved = false;
+      boolean argsFailed = false;
 
       //Solution to said scramble = "b" "r" "r" "f" "u" "l" "d" "b'" "f'" "r'" "l'" "d'" "u'"
 
@@ -793,6 +794,7 @@ public class Cube {
             }
             else{
                 System.err.println(i + " is not an argument for this program!\n");
+                argsFailed = true;
                 break;
             }
 
@@ -803,6 +805,11 @@ public class Cube {
       }
 
     theCube.display();
+
+    if(argsFailed == true) {
+      System.out.println("You did not give good arguments for the cube!");
+      System.exit(0);
+    }
 
     while(cubeSolved == false){
       System.out.println("The possible commands are u, u', d, d', l, l', r, r', f, f', b, b' or s to show how to solve (input anything else to see the cube): ");
@@ -841,6 +848,7 @@ public class Cube {
 
     if(cubeSolved == true){
       System.out.println("You solved the cube!");
+      System.exit(0);
     }
 
 
