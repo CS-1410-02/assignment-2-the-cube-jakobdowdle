@@ -768,14 +768,12 @@ public class Cube {
       //Create a Scanner object
       Scanner userInput = new Scanner(System.in); 
 
-      //Array to store user inputs
-      String userMoves = "";
 
       //Scramble the cube
       String[] scrambleHelper = {"u", "d", "l", "r", "f", "b", "d\'", "l\'", "u\'", "f\'", "r\'", "r\'", "b\'"};
       
-      for(int moves = 0; moves < scrambleHelper.length; moves++){
-        theCube.move(scrambleHelper[moves]);
+      for(int scrambleInput = 0; scrambleInput < scrambleHelper.length; scrambleInput++){
+        theCube.move(scrambleHelper[scrambleInput]);
       }
 
       boolean cubeSolved = false;
@@ -820,7 +818,6 @@ public class Cube {
       command.equals("l") || command.equals("l\'") || command.equals("r") || command.equals("r\'") ||
       command.equals("f") || command.equals("f\'") || command.equals("b") || command.equals("b\'")){
         theCube.move(command);
-        userMoves = (command + " " + userMoves);
       }
       else if(command.equals("s")){
         System.out.println();
