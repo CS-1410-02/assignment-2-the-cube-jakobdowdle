@@ -1,4 +1,15 @@
 import java.util.*;
+
+// Feedback
+//  Looks and works great! Very easy to read and I would have no problem jumping in and using it / contributing to it.
+//  That being said I would say potentially finding common functionality and moving that into a different function
+//  would do a lot for readability and editability. As oppose to having a, more or less, master movement function.
+// 
+//  I think it looks good though and executed the movements and implementations in a smart way.
+//  Really like the way you implemented some scrambling and solve detection. Very good!
+// 
+
+
 public class Cube {
 
   static class GeneratedCube {
@@ -434,7 +445,7 @@ public class Cube {
 
         //Set the old color values to the new ones
         counter = 0;
-        for(int color = 0; color < (this.data.length); color++){
+        for(int color = 0; color < (this.data.length); color++){// This is a particularly touch section to read from here to line 703. It would be tough to keep straight for me
             if(color != 0 && color != 2){
               if(movement.equals("f") || movement.equals("f\'")){
                 if(color == 1){
@@ -771,6 +782,7 @@ public class Cube {
 
       //Scramble the cube
       String[] scrambleHelper = {"u", "d", "l", "r", "f", "b", "d\'", "l\'", "u\'", "f\'", "r\'", "r\'", "b\'"};
+      //Could be cool to make this list populate randomly
       
       for(int scrambleInput = 0; scrambleInput < scrambleHelper.length; scrambleInput++){
         theCube.move(scrambleHelper[scrambleInput]);
@@ -791,6 +803,7 @@ public class Cube {
               theCube.move(input);
             }
             else{
+              //good way of handling that instead of just saying its wrong.
                 System.err.println(i + " is not an argument for this program!\n");
                 argsFailed = true;
                 break;
@@ -805,7 +818,7 @@ public class Cube {
     theCube.display();
 
     if(argsFailed == true) {
-      System.out.println("You did not give good arguments for the cube!");
+      System.out.println("You did not give good arguments for the cube!"); //harsh
       System.exit(0);
     }
 
